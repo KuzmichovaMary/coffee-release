@@ -1,16 +1,17 @@
 import sqlite3
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.uic import loadUi
+# from PyQt5.uic import loadUi
 import sys
+from addEditCoffeeForm import Ui_Dialog
 
 from PyQt5.QtWidgets import QApplication, QDialog, QMainWindow, QPushButton
 
 
-class FilmAddDialog(QDialog):
+class FilmAddDialog(QDialog, Ui_Dialog):
     def __init__(self):
         super().__init__()
-        loadUi("addEditCoffeeForm.ui", self)
+        self.setupUi(self)
         self.accepted = 0
         self.pushButton.clicked.connect(self.get_data)
         self.make_combo_box()

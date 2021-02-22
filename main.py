@@ -2,18 +2,19 @@
 
 import sqlite3
 import sys
-from PyQt5.uic import loadUi
+# from PyQt5.uic import loadUi
+from main_ui import Ui_MainWindow
 from PyQt5.QtWidgets import QHeaderView, QTableWidgetItem, QTableWidget
 
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 from addEditDialog import FilmAddDialog, FilmEditDialog
 
 
-class FilmsLibrary(QMainWindow):
+class FilmsLibrary(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        loadUi("main.ui", self)
-        self.connection = sqlite3.connect("coffee.sqlite")
+        self.setupUi(self)
+        self.connection = sqlite3.connect("data/coffee.sqlite")
         self.display_film_data()
         self.pushButton.clicked.connect(self.add_film)
         self.pushButton_2.clicked.connect(self.edit_film)
